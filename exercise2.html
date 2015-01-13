@@ -11,12 +11,12 @@
 
     <!-- CHAT MARKUP -->
     <div class='example-chat l-demo-container'>
-      <header></header>
+      <header>Enter your favourite quote!</header>
 
       <div class='example-chat-toolbar'>
         
         <label for='nameInput'>Username:</label>
-        <input ng-model='name' type='text' id='nameInput' placeholder='enter a username...'>
+        <input ng-model='name' type='text' id='nameInput' placeholder='enter a name...'>
       </div>
 
       <ul id='example-messages' class='example-chat-messages'>
@@ -28,7 +28,7 @@
 
       <footer>
         <label for='messageInput'>Text:</label>
-        <input ng-model='msg' ng-keydown="addMessage($event)" type='text' id='messageInput'  placeholder='Type a message...'>
+        <input ng-model='msg' ng-keydown="addMessage($event)" type='text' id='messageInput'  placeholder='Type a favourite quote...'>
       </footer>
     </div>
 
