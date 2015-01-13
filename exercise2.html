@@ -14,9 +14,10 @@
       <header>Enter your favourite quote!</header>
 
       <div class='example-chat-toolbar'>
-        
         <label for='nameInput'>Username:</label>
         <input ng-model='name' type='text' id='nameInput' placeholder='enter a name...'>
+        <label for='messageInput'>Text:</label>
+        <input ng-model='msg' ng-keydown="addMessage($event)" type='text' id='messageInput'  placeholder='Type a favourite quote...'>
       </div>
 
       <ul id='example-messages' class='example-chat-messages'>
@@ -27,8 +28,6 @@
       </ul>
 
       <footer>
-        <label for='messageInput'>Text:</label>
-        <input ng-model='msg' ng-keydown="addMessage($event)" type='text' id='messageInput'  placeholder='Type a favourite quote...'>
       </footer>
     </div>
 
