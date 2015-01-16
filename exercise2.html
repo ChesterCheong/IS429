@@ -4,21 +4,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
-    <link rel='stylesheet' href='../stylesheets/example.css'/>
+    <link rel='stylesheet' href='stylesheets/design.css'/>
   </head>
 
   <body ng-controller="MyController">
 
     <!-- CHAT MARKUP -->
     <div class='example-chat l-demo-container'>
-      <header>Enter your favourite quote!</header>
+      <header>Firebase Chat Demo</header>
 
       <div class='example-chat-toolbar'>
         <label for='nameInput'>Username:</label>
-        <input ng-model='name' type='text' id='nameInput' placeholder='enter your name...'>
-        <br>
-        <label for='messageInput'>Text:</label>
-        <input ng-model='msg' ng-keydown="addMessage($event)" type='text' id='messageInput'  placeholder='Type a favourite quote...'>
+        <input ng-model='name' type='text' id='nameInput' placeholder='enter a username...'>
       </div>
 
       <ul id='example-messages' class='example-chat-messages'>
@@ -29,8 +26,9 @@
       </ul>
 
       <footer>
-      <a href='http://zanychew.github.io/cloudy/'>link to next person here!</a>
+        <input ng-model='msg' ng-keydown="addMessage($event)" type='text' id='messageInput'  placeholder='Type a message...'>
       </footer>
+      <a href='http://uzkk3cc31dc8.zanychew.koding.io/list.html'>test</a>
     </div>
 
     <script>
