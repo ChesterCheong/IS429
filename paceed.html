@@ -8,13 +8,14 @@
 <body ng-controller="userController">
 <div class="container">
 
-<h3>Users</h3>
+<h3>Paceed</h3>
 
 <table class="table table-striped">
   <thead>
     <tr>
       <th>First Name</th>
       <th>Last Name</th>
+      <th>Pace Group</th>
       <th>Edit</th>
       <th>Delete</th>
     </tr>
@@ -23,13 +24,14 @@
     <tr ng-repeat="user in users">
       <td>{{ user.fName }}</td>
       <td>{{ user.lName }}</td>
+      <td>{{ user.pGroup }}</td>
             <td>
         <button class="btn btn-info" ng-click="editUser(user.id)">
           <span class="glyphicon glyphicon-pencil"></span>  Edit
         </button>
       </td>
       <td>
-        <button class="btn btn-primary" ng-click="deleteUser(user.id)">
+        <button class="btn btn-danger" ng-click="deleteUser(user.id)">
           <span class="glyphicon glyphicon-pencil"></span>  Delete
         </button>
       </td>
@@ -41,7 +43,6 @@
 <button class="btn btn-success" ng-click="editUser('new')">
 <span class="glyphicon glyphicon-user"></span>  Create New User
 </button>
-<hr>
 
 
 <h3 ng-show="edit">Create New User:</h3>
@@ -58,6 +59,12 @@
     <label class="col-sm-2 control-label">Last Name:</label>
     <div class="col-sm-10">
     <input type="text" ng-model="lName" ng-disabled="!edit" placeholder="Last Name">
+    </div>
+  </div>
+    <div class="form-group">
+    <label class="col-sm-2 control-label">Pace Group:</label>
+    <div class="col-sm-10">
+    <input type="text" ng-model="pGroup" ng-disabled="!edit" placeholder="Pace Group">
     </div>
   </div>
   <div class="form-group">
@@ -85,16 +92,17 @@
   function userController($scope) {
     $scope.fName = '';
     $scope.lName = '';
+    $scope.pGroup = '';
     $scope.passw1 = '';
     $scope.passw2 = '';
     
     //We can replace this with a Firebase url later on. 
     $scope.users = [
-        {id:1, fName:'Hege'  , lName:"Pege" },
-        {id:2, fName:'Kim'   , lName:"Pim" },
-        {id:3, fName:'Jack'  , lName:"Jones" },
-        {id:4, fName:'John'  , lName:"Doe" },
-        {id:5, fName:'Peter' , lName:"Pan" }
+        {id:1, fName:'Hege'  , lName:"Pege" , pGroup:"4:50km/hr"},
+        {id:2, fName:'Kim'   , lName:"Pim" , pGroup:"5:20km/hr" },
+        {id:3, fName:'Jack'  , lName:"Jones" , pGroup:"3:30km/hr" },
+        {id:4, fName:'John'  , lName:"Doe" , pGroup:"4:00km/hr" },
+        {id:5, fName:'Peter' , lName:"Pan" , pGroup:"6:00km/hr" }
     ];
     
     $scope.edit = true;
@@ -109,11 +117,13 @@
             $scope.incomplete = true;
             $scope.fName = '';
             $scope.lName = '';
+            $scope.pGroup = '';
             console.log("new user.");
         } else {
             $scope.edit = true;
             $scope.fName = $scope.users[id-1].fName;
             $scope.lName = $scope.users[id-1].lName; 
+            $scope.pGroup = $scope.users[id-1].pGroup; 
             console.log("existing user.");
         }
     };
@@ -122,6 +132,7 @@
     $scope.$watch('passw2',function() {$scope.test();});
     $scope.$watch('fName', function() {$scope.test();});
     $scope.$watch('lName', function() {$scope.test();});
+    $scope.$watch('pGroup', function() {$scope.test();});
     $scope.test = function() {
         if ($scope.passw1 !== $scope.passw2) {
             $scope.error = true;
@@ -137,11 +148,12 @@
       //Add new if no index is passed in.
       if($scope.currentId=='new'){
         //Using the array length as the next index while prototyping. 
-        $scope.users.push({id:$scope.users.length+1, fName:$scope.fName  , lName:$scope.lName });
+        $scope.users.push({id:$scope.users.length+1, fName:$scope.fName  , lName:$scope.lName , pGroup:$scope.pGroup });
       }
       else{
         $scope.users[$scope.currentId-1].fName = $scope.fName;
         $scope.users[$scope.currentId-1].lName = $scope.lName;
+        $scope.users[$scope.currentId-1].pGroup = $scope.pGroup;
       }
     };
     
@@ -154,16 +166,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
